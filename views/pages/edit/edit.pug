@@ -1,0 +1,49 @@
+extend ../../layouts/default.edit.pug
+include ../../mixins/box-feature.pug
+include ../../mixins/sidebar-editor.pug
+
+block main
+    .row.align-items-center
+      .col-1.feature-title
+        span Chức Năng
+      .col-11
+        .toolbar
+          .toolbar-scroll-container
+            .toolbar-group
+              +box-feature('fa-solid fa-magnifying-glass-plus', 'Phóng to')
+              +box-feature('fa-solid fa-magnifying-glass-minus', 'Thu nhỏ')
+              +box-feature('fa-solid fa-scissors', 'Cắt')
+              +box-feature('fa-solid fa-paintbrush', 'Vẽ')
+              +box-feature('fa-solid fa-filter', 'Lọc')
+              +box-feature('fa-solid fa-plus', 'Thêm')
+              +box-feature('fa-solid fa-money-bill-transfer', 'Chuyển đổi')
+              +box-feature('fa-solid fa-angle-right', 'Chức năng 1')
+              +box-feature('fa-solid fa-angle-right', 'Chức năng 2')
+              +box-feature('fa-solid fa-angle-right', 'Chức năng 3')
+              +box-feature('fa-solid fa-rotate-left', 'Hoàn tác')
+              //- +box-feature('fa-solid fa-rotate-left', 'Hoàn tác')
+              //- +box-feature('fa-solid fa-rotate-left', 'Hoàn tác')
+              +box-feature('fa-solid fa-rotate-right', 'Làm lại')
+            .toolbar-divider
+          .toolbar-save
+            button.save-btn
+              span Lưu
+              i.fa-solid.fa-angle-down
+    
+    .container-editor
+      +sidebarEditor([
+        "Chỉnh sửa",
+        "Bộ lọc",
+        "Văn bản",
+        "Nhãn dán",
+        "Cắt",
+        "Vẽ"
+      ])
+
+      .editor-content
+        .content-box
+          h3 Tùy chọn chức năng
+          p Chọn một tính năng từ sidebar để xem tùy chỉnh.
+
+    
+    

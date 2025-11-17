@@ -1,0 +1,13 @@
+mixin sidebarEditor(items)
+
+  .editor-sidebar.is-open
+    .title-siderbar
+      p Chi tiết
+    ul.sidebar-menu
+      each item, i in items
+        // Gán class 'active' cho mục đầu tiên
+        li(class=i === 0 ? "active" : "")= item
+
+    // Nút đóng/mở
+    .btn.sidebar-toggle-btn
+      i.fa-solid.fa-angle-left
