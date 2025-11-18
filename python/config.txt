@@ -1,0 +1,11 @@
+#config.txt: driver python
+
+PyQt6
+pyinstaller
+opencv-python
+Pillow
+numpy
+scikit-image
+FastAPI
+uvicorn[standard]
+pydantic

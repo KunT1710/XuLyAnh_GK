@@ -1,0 +1,47 @@
+<RCC>
+  <qresource prefix="zoom_in">
+    <file>zoom_in.png</file>
+  </qresource>
+  <qresource prefix="logo">
+    <file>logo512.png</file>
+  </qresource>
+  <qresource prefix="file">
+    <file>file.png</file>
+  </qresource>
+  <qresource prefix="open">
+    <file>open.png</file>
+  </qresource>
+  <qresource prefix="face">
+    <file>facebook.png</file>
+  </qresource>
+  <qresource prefix="git">
+    <file>github.png</file>
+  </qresource>
+  <qresource prefix="down">
+    <file>down.png</file>
+  </qresource>
+  <qresource prefix="cut">
+    <file>cut.png</file>
+  </qresource>
+  <qresource prefix="paint">
+    <file>paint.png</file>
+  </qresource>
+  <qresource prefix="filter">
+    <file>filter.png</file>
+  </qresource>
+  <qresource prefix="add">
+    <file>add.png</file>
+  </qresource>
+  <qresource prefix="undo">
+    <file>undo.png</file>
+  </qresource>
+  <qresource prefix="redo">
+    <file>redo.png</file>
+  </qresource>
+  <qresource prefix="down">
+    <file>down.png</file>
+  </qresource>
+  <qresource prefix="zoom_out">
+    <file>zoom_out.png</file>
+  </qresource>
+</RCC>
