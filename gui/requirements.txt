@@ -1,4 +1,4 @@
-#config.txt: driver python
+#requirements: driver python
 
 PyQt6
 pyinstaller

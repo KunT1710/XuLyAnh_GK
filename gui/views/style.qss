@@ -1,0 +1,93 @@
+#saveButton:pressed {
+    background-color: #005f99;
+    padding-left: 6px;
+    padding-top: 6px;
+}
+
+#settingBar {
+    background-color: #848484;
+    border-radius: 5px;
+}
+
+#down, #saveButton {
+    background-color: #39BAF4;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#down:hover, #saveButton:hover {
+    background-color: #55c1f7;
+}
+
+#down:pressed, #saveButton:pressed {
+    background-color: #2b9dd4;
+    padding-left: 2px;
+    padding-top: 2px;
+}
+
+#btnCloseSidebar, #btnCloseDown {
+    background-color: #FF5C5C;    
+    color: white;                 
+    border: none;                   
+    border-radius: 5px;             
+    padding: 5px 10px;              
+    font-weight: bold;
+}
+
+#btnCloseSidebar:hover, #btnCloseDown:hover {
+    background-color: #FF7878;    
+}
+
+#btnCloseSidebar:pressed, #btnCloseDown:pressed {
+    background-color: #FF3B3B;    
+    padding-left: 4px;
+    padding-top: 4px;
+}
+
+QTextEdit#title_chucNan,
+QTextEdit#title_chucNang_2 {
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 12pt;
+    color: #444444;
+}
+
+#frame QToolButton, #unDo, #reDo {
+    background-color: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-radius: 2px;
+    color: #333333;
+    font-weight: bold;
+}
+
+#frame QToolButton:hover, #unDo:hover, #reDo:hover {
+    background-color: #e0f7ff;
+    border: 1px solid #80d0ff;
+}
+
+#frame QToolButton:pressed, #unDo:pressed, #reDo:pressed {
+    background-color: #ccefff;
+    border: 1px solid #0099cc;
+    padding-left: 6px;
+    padding-top: 6px;
+}
+
+
+/* main.py */
+QPushButton#openFileButton {
+    background-color: #39BAF4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14pt;
+    font-weight: bold;
+
+    padding-left: 10px;  
+    text-align: left;   
+}
+QPushButton#openFileButton:hover {
+    background-color: #A6C924;
+}
+
