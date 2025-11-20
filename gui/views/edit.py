@@ -8,7 +8,15 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QIcon
-import os
+import os, sys
+
+def resource_path(relative_path):
+    if getattr(sys, 'frozen', False):  
+        base_path = sys._MEIPASS
+    else:                              
+        base_path = os.path.abspath(os.path.dirname(__file__))
+    return os.path.join(base_path, relative_path)
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -99,22 +107,29 @@ class Ui_MainWindow(object):
         self.transfer.setGeometry(QtCore.QRect(550, 3, 70, 70))
         self.transfer.setMaximumSize(QtCore.QSize(70, 70))
         self.transfer.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        icon_path_transfer = os.path.join(os.path.dirname(__file__), "../icon/transfer.png")
-        icon_transfer = QtGui.QIcon(icon_path_transfer)
+        icon_transfer = QIcon(resource_path("../icon/transfer.png"))
         self.transfer.setIcon(icon_transfer)
         self.transfer.setIconSize(QtCore.QSize(40, 40))
-
         self.transfer.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
         self.transfer.setObjectName("transfer")
-        self.transfer.setText("Chuyển Đổi")
-        self.pushButton_15 = QtWidgets.QPushButton(parent=self.frame)
-        self.pushButton_15.setGeometry(QtCore.QRect(640, 3, 70, 70))
-        self.pushButton_15.setMaximumSize(QtCore.QSize(70, 70))
-        self.pushButton_15.setObjectName("pushButton_15")
-        self.pushButton_16 = QtWidgets.QPushButton(parent=self.frame)
-        self.pushButton_16.setGeometry(QtCore.QRect(720, 3, 70, 70))
-        self.pushButton_16.setMaximumSize(QtCore.QSize(70, 70))
-        self.pushButton_16.setObjectName("pushButton_16")
+        self.rotate = QtWidgets.QToolButton(parent=self.frame)
+        self.rotate.setGeometry(QtCore.QRect(640, 3, 70, 70))
+        self.rotate.setMaximumSize(QtCore.QSize(70, 70))
+        self.rotate.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        icon_rotate = QIcon(resource_path("../icon/rotate.png"))  # icon bạn muốn dùng
+        self.rotate.setIcon(icon_rotate)
+        self.rotate.setIconSize(QtCore.QSize(40, 40))
+        self.rotate.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
+        self.rotate.setObjectName("rotate")
+        self.edge = QtWidgets.QToolButton(parent=self.frame)
+        self.edge.setGeometry(QtCore.QRect(720, 3, 70, 70))
+        self.edge.setMaximumSize(QtCore.QSize(70, 70))
+        self.edge.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        icon_edge = QIcon(resource_path("../icon/edge.png"))  # icon Edge
+        self.edge.setIcon(icon_edge)
+        self.edge.setIconSize(QtCore.QSize(40, 40))
+        self.edge.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
+        self.edge.setObjectName("edge")
         self.scroll_function.setWidget(self.scrollAreaWidgetContents)
         self.unDo_reDo = QtWidgets.QFrame(parent=self.centralwidget)
         self.unDo_reDo.setGeometry(QtCore.QRect(1050, 3, 261, 83))
@@ -165,8 +180,8 @@ class Ui_MainWindow(object):
         self.title_chucNang_2.setObjectName("title_chucNang_2")
         self.btnCloseSidebar = QtWidgets.QPushButton(self.sidebarFrame)
         self.btnCloseSidebar.setGeometry(QtCore.QRect(10, 500, 90, 30))
-        close_icon_path = os.path.join(os.path.dirname(__file__), "../icon/close.png")
-        self.btnCloseSidebar.setIcon(QIcon(close_icon_path))
+        close_icon = QIcon(resource_path("../icon/close.png"))
+        self.btnCloseSidebar.setIcon(close_icon)
         self.btnCloseSidebar.setIconSize(QtCore.QSize(24,24))
         self.btnCloseSidebar.setObjectName("btnCloseSidebar")
         self.downFrame = QtWidgets.QFrame(parent=self.centralwidget)
@@ -176,8 +191,7 @@ class Ui_MainWindow(object):
         self.downFrame.setObjectName("downFrame")
         self.btnCloseDown = QtWidgets.QPushButton(self.downFrame)
         self.btnCloseDown.setGeometry(QtCore.QRect(15, 470, 90, 30))
-        close_icon_path = os.path.join(os.path.dirname(__file__), "../icon/close.png")
-        self.btnCloseDown.setIcon(QIcon(close_icon_path))
+        self.btnCloseDown.setIcon(QIcon(close_icon))
         self.btnCloseDown.setIconSize(QtCore.QSize(24,24))
         self.btnCloseDown.setObjectName("btnCloseDown")
         self.saveButton = QtWidgets.QToolButton(parent=self.downFrame)
@@ -268,13 +282,13 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Chỉnh sửa ảnh - Group"))
         self.zoomIn.setText(_translate("MainWindow", "Phóng To"))
         self.zoomOut.setText(_translate("MainWindow", "Thu Nhỏ"))
-        self.cut.setText(_translate("MainWindow", "Vẽ"))
+        self.cut.setText(_translate("MainWindow", "Cắt/Tách"))
         self.paint.setText(_translate("MainWindow", "Vẽ"))
         self.filter.setText(_translate("MainWindow", "Lọc"))
         self.add.setText(_translate("MainWindow", "Thêm"))
         self.transfer.setText(_translate("MainWindow", "Chuyển Đổi"))
-        self.pushButton_15.setText(_translate("MainWindow", "Chức Năng Thêm 1"))
-        self.pushButton_16.setText(_translate("MainWindow", "Chức Năng Thêm 2"))
+        self.rotate.setText(_translate("MainWindow", "Xoay"))
+        self.edge.setText(_translate("MainWindow", "Tìm Cạnh"))
         self.unDo.setText(_translate("MainWindow", "Hoàn Tác"))
         self.reDo.setText(_translate("MainWindow", "Quay Lại"))
         self.down.setText(_translate("MainWindow", "Tải Xuống"))
