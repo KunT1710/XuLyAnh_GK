@@ -10,3 +10,4 @@ FastAPI
 uvicorn[standard]
 pydantic
 requests
+PySide6

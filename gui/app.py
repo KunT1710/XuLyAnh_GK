@@ -264,11 +264,9 @@ class MainWindow(QtWidgets.QMainWindow):
             print(f"Rotate {rotate_type} chưa được implement")
             return
 
-        # 1. Xử lý Frontend
         self.original_pixmap = self.original_pixmap.transformed(transform)
         self.update_image_display()
 
-        # 2. Upload lên Server (Full-stack logic)
         self.upload_image_to_server(self.original_pixmap)
         
     # back-end
