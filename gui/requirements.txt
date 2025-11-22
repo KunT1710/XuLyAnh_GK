@@ -9,3 +9,4 @@ scikit-image
 FastAPI
 uvicorn[standard]
 pydantic
+requests

@@ -4,11 +4,11 @@ import cv2
 import shutil
 
 def _save_history_json(session_path, history):
-    with open(f"{session_path}/history/history.json", "w") as f:
+    with open(f"{session_path}/history.json", "w") as f:
         json.dump(history, f, indent=4)
 
 def _load_history_json(session_path):
-    history_path = f"{session_path}/history/history.json"
+    history_path = f"{session_path}/history.json"
     if not os.path.exists(history_path):
         return None
     with open(history_path, "r") as f:
@@ -20,7 +20,8 @@ def get_current_image_url(session_id: str):
 def apply_undo(session_path: str):
     history = _load_history_json(session_path)
     if history is None:
-        return {"error": "Không tìm thấy history.json"}
+        return {"error": "Không tìm thấy history.json",
+                "session_path": session_path}
 
     current_step = history["current_step"]
     if current_step <= 0:
@@ -49,7 +50,8 @@ def apply_undo(session_path: str):
 def apply_redo(session_path: str):
     history = _load_history_json(session_path)
     if history is None:
-        return {"error": "Không tìm thấy history.json"}
+        return {"error": "Không tìm thấy history.json",
+                "session_path": session_path}
 
     current_step = history["current_step"]
     steps = history["steps"]
