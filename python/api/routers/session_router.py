@@ -1,7 +1,7 @@
-from fastapi import APIRouter, UploadFile, File
+from fastapi import APIRouter, UploadFile, File,HTTPException
 import uuid, os, json, cv2
 import numpy as np
-
+import shutil
 from api.utils.auth import create_token
 
 router = APIRouter(prefix="/session", tags=["Session"])
@@ -15,7 +15,6 @@ async def create_session(file: UploadFile = File(...)):
     session_path = f"{BASE_DIR}/{session_id}"
     os.makedirs(f"{session_path}/history", exist_ok=True)
 
-    # 2. Lưu ảnh gốc
     img_bytes = await file.read()
     img_np = np.frombuffer(img_bytes, np.uint8)
     img = cv2.imdecode(img_np, cv2.IMREAD_COLOR)
@@ -29,7 +28,6 @@ async def create_session(file: UploadFile = File(...)):
     cv2.imwrite(original_path, img)
     cv2.imwrite(current_path, img)
 
-    # 3. Khởi tạo history.json
     history = {
         "current_step": 0,
         "steps": [
@@ -43,9 +41,44 @@ async def create_session(file: UploadFile = File(...)):
         json.dump(history, f)
     token_data = {"sub": session_id} 
     session_token = create_token(data=token_data)
-    # 4. Trả về session_id VÀ token
     return {
         "session_id": session_id,
         "access_token": session_token,
         "token_type": "bearer"
+    }
+
+
+@router.delete("/delete/{session_id}")
+async def delete_session(session_id: str):
+
+    if not session_id.replace("-", "").isalnum():
+         raise HTTPException(status_code=400, detail="Invalid session ID format")
+
+    try:
+        uuid.UUID(session_id)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid session ID format")
+
+    session_path = os.path.join(BASE_DIR, session_id)
+
+    if not os.path.abspath(session_path).startswith(os.path.abspath(BASE_DIR)):
+        raise HTTPException(status_code=403, detail="Access denied")
+
+    if not os.path.exists(session_path):
+        raise HTTPException(
+            status_code=404,
+            detail=f"Session '{session_id}' không tồn tại!"
+        )
+
+    try:
+        shutil.rmtree(session_path)
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Không thể xoá session: {str(e)}"
+        )
+
+    return {
+        "status": "success",
+        "message": f"Session '{session_id}' đã được xoá thành công."
     }
